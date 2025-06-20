@@ -18,9 +18,6 @@ export class HeaderComponent {
   @HostBinding('attr.data-sticky-name') dataStickyName = 'header';
   @HostBinding('id') hostId = 'header';
 
-  // public usuario$ = this.store.select(obtenerUsuario);
-  // public contenedorNombre$: Observable<string>;
-
   public menuItems: any[] = [
     {
       titulo: 'Profile',
@@ -28,22 +25,4 @@ export class HeaderComponent {
       link: '/perfil',
     },
   ];
-
-  // constructor() {
-  //   super();
-  // }
-
-  // getUserImageUrl() {
-  //   return this.usuario$?.pipe(map((usuario) => {
-  //     if(usuario?.imagen.includes('defecto')){
-  //       return usuario?.imagen;
-  //     } else {
-  //       return `${usuario?.imagen}?${new Date().getTime()}`;
-  //     }
-  //   }));
-  // }
-
-  // ngOnInit(): void {
-  //   this.contenedorNombre$ = this.store.select(obtenerContenedorNombre);
-  // }
 }
