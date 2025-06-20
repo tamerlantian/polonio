@@ -49,6 +49,15 @@
         <span class="checkbox-label"> Recuerdame </span>
       </label>
 
+      @if (isProduction) {
+        <div class="flex justify-center">
+          <ngx-turnstile
+            [siteKey]="turnstileSiteKey"
+            (resolved)="onTurnstileSuccess($event)"
+          ></ngx-turnstile>
+        </div>
+      }
+
       <app-advanced-button
         [text]="'Iniciar sesión'"
         [loadingText]="'Iniciando sesión...'"
