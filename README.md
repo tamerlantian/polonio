@@ -3,7 +3,7 @@
 [![Angular Version](https://img.shields.io/badge/Angular-17-%23DD0031?logo=angular)](https://angular.io/)
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-Ruteo App es una solución integral para la gestión inteligente de envíos y flotas de transporte, desarrollada con Angular 17.
+Transporte es una solución integral para la gestión inteligente de envíos y flotas de transporte, desarrollada con Angular 17.
 
 ## Requisitos previos
 

@@ -18,9 +18,7 @@
         <app-input
           placeholder="Ingresa tu correo"
           formControlName="username"
-          [invalid]="formularioRegister.get('username')?.invalid"
-          [dirty]="formularioRegister.get('username')?.dirty"
-          [touched]="formularioRegister.get('username')?.touched"
+          [control]="formularioRegister.get('username')"
           [errors]="{
             required: 'El correo es requerido.',
             email: 'Ingresa un correo válido.',
@@ -28,28 +26,27 @@
         ></app-input>
       </div>
       <div class="flex flex-col gap-1">
-        <label class="form-label font-normal text-gray-900"> Contraseña </label>
+        <label class="form-label text-gray-900"> Contraseña </label>
         <app-input
-          placeholder="Ingresa tu contraseña"
+          type="password"
+          placeholder="*************"
           formControlName="password"
-          [invalid]="formularioRegister.get('password')?.invalid"
-          [dirty]="formularioRegister.get('password')?.dirty"
-          [touched]="formularioRegister.get('password')?.touched"
+          [control]="formularioRegister.get('password')"
           [errors]="{
             required: 'La contraseña es requerida.',
           }"
         ></app-input>
       </div>
       <div class="flex flex-col gap-1">
-        <label class="form-label font-normal text-gray-900"> Confirmar contraseña </label>
+        <label class="form-label text-gray-900"> Confirmar contraseña </label>
         <app-input
-          placeholder="Ingresa tu contraseña"
+          type="password"
+          placeholder="*************"
           formControlName="confirmarContrasena"
-          [invalid]="formularioRegister.get('confirmarContrasena')?.invalid"
-          [dirty]="formularioRegister.get('confirmarContrasena')?.dirty"
-          [touched]="formularioRegister.get('confirmarContrasena')?.touched"
+          [control]="formularioRegister.get('confirmarContrasena')"
           [errors]="{
             required: 'La contraseña es requerida.',
+            notMatching: 'Las contraseñas no coinciden.',
           }"
         ></app-input>
       </div>
@@ -70,13 +67,6 @@
           </a>
         </span>
       </label>
-
-      <!-- @if (isProduction) {
-        <ngx-turnstile
-          [siteKey]="turnstileSiteKey"
-          (resolved)="onTurnstileSuccess($event)"
-        ></ngx-turnstile>
-      } -->
 
       <app-advanced-button
         [text]="'Crear cuenta'"

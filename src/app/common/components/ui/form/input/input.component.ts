@@ -21,7 +21,7 @@ import { AbstractControl, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angul
         [disabled]="disabled"
         class="input"
       />
-      @if (invalid && (dirty || touched)) {
+      @if (shouldShowErrors()) {
         @for (error of getErrors(); track $index) {
           <p class="text-sm text-red-600 mt-1">
             {{ error }}
@@ -80,7 +80,16 @@ export class InputComponent implements ControlValueAccessor {
   // Maneja el evento de blur
   onBlur(): void {
     this.onTouched(); // Notifica que el input fue tocado
-    this.touched = true; // Marca el control como "tocado"
+  }
+
+  // Determina si se deben mostrar los errores
+  shouldShowErrors(): boolean {
+    // Si tenemos acceso al control, usamos sus propiedades
+    if (this.control) {
+      return this.control.invalid && (this.control.dirty || this.control.touched);
+    }
+    // Si no, usamos las propiedades pasadas directamente
+    return this.invalid === true && (this.dirty === true || this.touched === true);
   }
 
   // Obtiene los mensajes de error
@@ -103,12 +112,6 @@ export class InputComponent implements ControlValueAccessor {
       });
 
       return activeErrors;
-    }
-
-    // Si no tenemos acceso al control, mantenemos el comportamiento anterior
-    // pero solo si el input es inválido
-    if (this.invalid) {
-      return Object.keys(this.errors).map(key => this.errors[key] || 'Error desconocido');
     }
 
     return [];
