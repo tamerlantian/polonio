@@ -82,6 +82,7 @@ export class AuthEffects {
           this.cookieService.delete(LOCALSTORAGE_KEYS.USER);
           this.cookieService.delete(LOCALSTORAGE_KEYS.AUTH_TOKEN);
           this.cookieService.delete(LOCALSTORAGE_KEYS.REFRESH_TOKEN);
+          this.cookieService.delete(LOCALSTORAGE_KEYS.CONTENEDOR);
           this.router.navigate(['/auth/login']);
         })
       ),
