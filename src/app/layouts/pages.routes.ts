@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from '@app/common/guards/auth.guard';
+import { contenedorGuard } from '@app/common/guards/contenedor.guard';
 
 export default [
   {
@@ -8,8 +9,19 @@ export default [
     pathMatch: 'full',
   },
   {
-    path: 'dashboard',
+    path: 'contenedor',
     canActivate: [authGuard],
+    loadComponent: () => import('./simple-layout/simple-layout.component'),
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('../modules/contenedor/contenedor.routes'),
+      },
+    ],
+  },
+  {
+    path: 'dashboard',
+    canActivate: [authGuard, contenedorGuard],
     loadComponent: () => import('./admin-layout/admin-layout.component'),
     children: [
       {
